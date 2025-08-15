@@ -84,8 +84,6 @@ impl EkidenError {
     pub fn general<S: Into<String>>(msg: S) -> Self {
         Self::General(msg.into())
     }
-
-    #[cfg(feature = "aptos")]
     pub fn aptos<S: Into<String>>(msg: S) -> Self {
         Self::Aptos(msg.into())
     }

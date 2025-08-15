@@ -1,24 +1,5 @@
-// use aptos_crypto::{ed25519::Ed25519PrivateKey, PrivateKey, ValidCryptoMaterialStringExt};
-// use aptos_rust_sdk::client::{
-//     builder::AptosClientBuilder, config::AptosNetwork, rest_api::AptosFullnodeClient,
-// };
-// use aptos_rust_sdk_types::{
-//     api_types::{
-//         address::AccountAddress,
-//         chain_id::ChainId,
-//         module_id::ModuleId,
-//         transaction::{EntryFunction, RawTransaction, SignedTransaction, TransactionPayload},
-//         transaction_authenticator::{AuthenticationKey, TransactionAuthenticator},
-//     },
-//     error::RestError,
-// };
-// use ekiden_rust_sdk::vault::VaultId;
-
-use std::time::Duration;
-
-// use std::str::FromStr;
-// use std::time::Duration;
 use ekiden_rust_sdk::aptos::vault::VaultContract;
+use std::time::Duration;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Initialize logging
