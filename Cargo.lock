@@ -91,21 +91,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 
 [[package]]
-name = "android-tzdata"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e999941b234f3131b00bc13c22d06e8c5ff726d1b6318ac7eb276997bbb4fef0"
-
-[[package]]
-name = "android_system_properties"
-version = "0.1.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "819e7219dbd41043ac279b19830f2efc897156490d7fd6ea916720117ee66311"
-dependencies = [
- "libc",
-]
-
-[[package]]
 name = "anstream"
 version = "0.6.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -162,64 +147,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b0674a1ddeecb70197781e945de4b3b8ffb61fa939a5597bcf48503737663100"
 
 [[package]]
-name = "aptos-bcs"
-version = "0.1.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ef2367d495719360c63badd2c85a1c001f8b3eaafca068bd505fc757ba7e1c8"
-dependencies = [
- "serde",
- "thiserror 1.0.69",
-]
-
-[[package]]
-name = "aptos-crypto"
-version = "0.0.3"
-source = "git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main#1c800f60613d6953937660dd840ce70e4fba4cbd"
-dependencies = [
- "aes-gcm",
- "anyhow",
- "aptos-bcs",
- "aptos-crypto-derive 0.0.3 (git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main)",
- "ark-bn254",
- "ark-ff",
- "base64 0.22.1",
- "blst",
- "bytes",
- "curve25519-dalek",
- "digest 0.9.0",
- "ed25519-dalek",
- "ff",
- "hex",
- "hkdf",
- "libsecp256k1",
- "more-asserts",
- "neptune",
- "num-bigint 0.4.6",
- "num-integer",
- "once_cell",
- "p256",
- "rand 0.7.3",
- "rand_core 0.9.3",
- "serde",
- "serde-name",
- "serde_bytes",
- "sha2 0.9.9",
- "sha3 0.9.1",
- "signature 2.2.0",
- "static_assertions",
- "thiserror 2.0.14",
- "tiny-keccak",
- "typenum",
-]
-
-[[package]]
 name = "aptos-crypto"
 version = "0.0.3"
 source = "git+https://github.com/vecheslav/aptos-rust-sdk.git?branch=main#51826e9271221e4e5e2c439555a0ff525abae326"
 dependencies = [
  "aes-gcm",
  "anyhow",
- "aptos-crypto-derive 0.0.3 (git+https://github.com/vecheslav/aptos-rust-sdk.git?branch=main)",
+ "aptos-crypto-derive",
  "arbitrary",
  "ark-bn254",
  "ark-ff",
@@ -259,16 +193,6 @@ dependencies = [
 [[package]]
 name = "aptos-crypto-derive"
 version = "0.0.3"
-source = "git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main#1c800f60613d6953937660dd840ce70e4fba4cbd"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
-]
-
-[[package]]
-name = "aptos-crypto-derive"
-version = "0.0.3"
 source = "git+https://github.com/vecheslav/aptos-rust-sdk.git?branch=main#51826e9271221e4e5e2c439555a0ff525abae326"
 dependencies = [
  "proc-macro2",
@@ -278,14 +202,14 @@ dependencies = [
 
 [[package]]
 name = "aptos-rust-sdk"
-version = "0.1.1"
-source = "git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main#1c800f60613d6953937660dd840ce70e4fba4cbd"
+version = "0.1.0"
+source = "git+https://github.com/vecheslav/aptos-rust-sdk.git?branch=main#51826e9271221e4e5e2c439555a0ff525abae326"
 dependencies = [
  "anyhow",
- "aptos-bcs",
- "aptos-crypto 0.0.3 (git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main)",
- "aptos-crypto-derive 0.0.3 (git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main)",
+ "aptos-crypto",
+ "aptos-crypto-derive",
  "aptos-rust-sdk-types",
+ "bcs 0.1.4",
  "ed25519-dalek",
  "hex",
  "libsecp256k1",
@@ -300,16 +224,15 @@ dependencies = [
 [[package]]
 name = "aptos-rust-sdk-types"
 version = "0.1.0"
-source = "git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main#1c800f60613d6953937660dd840ce70e4fba4cbd"
+source = "git+https://github.com/vecheslav/aptos-rust-sdk.git?branch=main#51826e9271221e4e5e2c439555a0ff525abae326"
 dependencies = [
  "anyhow",
- "aptos-bcs",
- "aptos-crypto 0.0.3 (git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main)",
- "aptos-crypto-derive 0.0.3 (git+https://github.com/aptos-labs/aptos-rust-sdk.git?branch=main)",
+ "aptos-crypto",
+ "aptos-crypto-derive",
+ "bcs 0.1.4",
  "ed25519-dalek",
  "hex",
  "libsecp256k1",
- "nom 8.0.0",
  "rand 0.7.3",
  "reqwest",
  "serde",
@@ -495,9 +418,9 @@ dependencies = [
 
 [[package]]
 name = "async-trait"
-version = "0.1.88"
+version = "0.1.89"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e539d3fca749fcee5236ab05e93a52867dd549cc157c8cb7f99595f3cedffdb5"
+checksum = "9035ad2d096bed7955a320ee7e2230574d28fd3c3a0f186cbea1ff3c7eed5dbb"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -758,21 +681,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724"
 
 [[package]]
-name = "chrono"
-version = "0.4.41"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c469d952047f47f91b68d1cba3f10d63c11d73e4636f24f08daf0278abf01c4d"
-dependencies = [
- "android-tzdata",
- "iana-time-zone",
- "js-sys",
- "num-traits",
- "serde",
- "wasm-bindgen",
- "windows-link",
-]
-
-[[package]]
 name = "cipher"
 version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -797,7 +705,7 @@ dependencies = [
  "async-trait",
  "convert_case",
  "json5",
- "nom 7.1.3",
+ "nom",
  "pathdiff",
  "ron",
  "rust-ini",
@@ -1122,12 +1030,11 @@ name = "ekiden-rust-sdk"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "aptos-crypto 0.0.3 (git+https://github.com/vecheslav/aptos-rust-sdk.git?branch=main)",
+ "aptos-crypto",
  "aptos-rust-sdk",
  "aptos-rust-sdk-types",
  "async-stream",
  "bcs 0.1.6",
- "chrono",
  "config",
  "futures-util",
  "hex",
@@ -1684,30 +1591,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "iana-time-zone"
-version = "0.1.63"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b0c919e5debc312ad217002b8048a17b7d83f80703865bbfcfebb0458b0b27d8"
-dependencies = [
- "android_system_properties",
- "core-foundation-sys",
- "iana-time-zone-haiku",
- "js-sys",
- "log",
- "wasm-bindgen",
- "windows-core",
-]
-
-[[package]]
-name = "iana-time-zone-haiku"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f31827a206f56af32e590ba56d5d2d085f558508192593743f16b2306495269f"
-dependencies = [
- "cc",
-]
-
-[[package]]
 name = "icu_collections"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2121,15 +2004,6 @@ checksum = "d273983c5a657a70a3e8f2a01329822f3b8c8172b73826411a55751e404a0a4a"
 dependencies = [
  "memchr",
  "minimal-lexical",
-]
-
-[[package]]
-name = "nom"
-version = "8.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df9761775871bdef83bee530e60050f7e54b1105350d6884eb0fb4f46c2f9405"
-dependencies = [
- "memchr",
 ]
 
 [[package]]
@@ -4089,41 +3963,6 @@ name = "winapi-x86_64-pc-windows-gnu"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
-
-[[package]]
-name = "windows-core"
-version = "0.61.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c0fdd3ddb90610c7638aa2b3a3ab2904fb9e5cdbecc643ddb3647212781c4ae3"
-dependencies = [
- "windows-implement",
- "windows-interface",
- "windows-link",
- "windows-result",
- "windows-strings",
-]
-
-[[package]]
-name = "windows-implement"
-version = "0.60.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a47fddd13af08290e67f4acabf4b459f647552718f683a7b415d290ac744a836"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.105",
-]
-
-[[package]]
-name = "windows-interface"
-version = "0.59.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bd9211b69f8dcdfa817bfd14bf1c97c9188afa36f4750130fcdf3f400eca9fa8"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.105",
-]
 
 [[package]]
 name = "windows-link"

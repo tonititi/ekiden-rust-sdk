@@ -14,9 +14,6 @@ pub use error::{EkidenError, Result};
 pub use types::*;
 pub use utils::{Crypto, KeyPair};
 
-// Optional Aptos utilities
-#[cfg(feature = "aptos")]
 pub mod aptos;
 
-#[cfg(feature = "aptos")]
 pub use aptos::*;

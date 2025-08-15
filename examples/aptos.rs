@@ -14,69 +14,30 @@
 // };
 // use ekiden_rust_sdk::vault::VaultId;
 
+use std::time::Duration;
+
 // use std::str::FromStr;
 // use std::time::Duration;
+use ekiden_rust_sdk::aptos::vault::VaultContract;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Initialize logging
     tracing_subscriber::fmt::init();
-    // let aptos = AptosNetwork::testnet();
-    // let TESTNET_USDC = "0x9967e130f7419f791c240acc17dde966ec84ad41652e2e87083ee613f460d019";
+    println!("🚀 Starting Ekiden SDK Vault Example");
 
-    // let TESTNET_VAULT_ADDRESS =
-    //     "0x9e53ba9771421bddb0ba8722cde10b8c6a933dba8557075610698a95b8a82ec6";
-    // let arg = std::env::args()
-    //     .nth(1)
-    //     .ok_or_else(|| anyhow::anyhow!("Missing argument for private key"))?;
+    let testnet_usdc = "0x9967e130f7419f791c240acc17dde966ec84ad41652e2e87083ee613f460d019";
 
-    // let private_key = Ed25519PrivateKey::from_encoded_string(&arg)?;
-    // let public_key = private_key.public_key();
-    // println!("Public key: {}", public_key);
-    // let builder = AptosClientBuilder::new(AptosNetwork::testnet());
-    // let client = builder.build();
-    // let balance = client
-    //     .get_account_balance(
-    //         "0x313b6b76b0c493954fe3c7d191392cc020e6455c8d48ffb83b250f991ae2de7d".to_string(),
-    //         TESTNET_USDC.to_string(),
-    //     )
-    //     .await?;
-    // println!("Balance: {:?}", balance);
-    // // Create a transaction
-    // let vault_address = AccountAddress::from_str(TESTNET_VAULT_ADDRESS)?;
-    // let vault_id = VaultId {
-    //     inner: AccountAddress::from_str(TESTNET_VAULT_ADDRESS)?,
-    // };
-    // // Serialize the arguments using BCS
-    // let arguments = vec![
-    //     bcs::to_bytes(&vault_id)?,
-    //     bcs::to_bytes(&u128::from_str("500000000000")?)?.to_vec(), // Convert string to u128
-    // ];
-    // let entry_function = EntryFunction::new(
-    //     ModuleId::new(vault_address, "vault".to_string()),
-    //     "deposit".to_string(),
-    //     vec![],
-    //     arguments,
-    //     // vec![
-    //     //     bcs::to_bytes(&TESTNET_USDC).unwrap(),
-    //     //     bcs::to_bytes(&1000u64).unwrap(),
-    //     //     bcs::to_bytes(&public_key).unwrap(),
-    //     // ],
-    // );
-    // let raw_transaction = RawTransaction::new(
-    //     AccountAddress::from_str(TESTNET_VAULT_ADDRESS)?,
-    //     sender.sequence_number(),
-    //     TransactionPayload::EntryFunction(entry_function),
-    //     100_000, // max_gas_amount
-    //     100,     // gas_unit_price
-    //     expiration_timestamp_secs,
-    //     chain_id,
-    // );
-    // let signed_transaction = SignedTransaction::new(
-    //     raw_transaction,
-    //     TransactionAuthenticator::ed25519(
-    //         public_key.clone(),
-    //         private_key.sign_arbitrary_message(b"AUTHORIZE"),
-    //     ),
-    // );
+    let ekiden_contract = "0xd65a029a14801af2332139317b9cf127b1f592dd53864cc4a4793cab502603bc";
+    let private = std::env::args()
+        .nth(1)
+        .ok_or_else(|| anyhow::anyhow!("Missing argument for private key"))?;
+    let vault_contract = VaultContract::new(&ekiden_contract, testnet_usdc, "testnet");
+    let deposit_tx = vault_contract.deposit_into_user(100u128, &private).await?;
+    println!("Deposit transaction: {:?}", deposit_tx);
+    // sleep 2 second
+    tokio::time::sleep(Duration::from_secs(2)).await;
+    let withdraw_tx = vault_contract.withdraw_from_user(50u128, &private).await?;
+    println!("Withdraw transaction: {:?}", withdraw_tx);
+
     Ok(())
 }

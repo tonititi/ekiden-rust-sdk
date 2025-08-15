@@ -13,10 +13,29 @@ A comprehensive, type-safe Rust SDK for interacting with the Ekiden Gateway API 
 - 📊 **Aptos Integration**: Optional Aptos blockchain utilities
 - 🧪 **Well Tested**: Comprehensive test coverage
 
+## Examples
+
+Check the `examples/` directory for complete working examples:
+
+- `basic_client.rs` - Basic API usage
+- `websocket_streams.rs` - WebSocket integration
+- `aptos.rs` - Aptos integration with deposit/withdraw functionality
+- `portfolio_monitor.rs` - Portfolio monitoring
+
+### Running Examples
+
+To test the Aptos integration example with deposit and withdraw functionality:
+
+```bash
+cargo run --example aptos -- "YOUR_PRIVATE_KEY"
+```
+
+Replace `YOUR_PRIVATE_KEY` with your actual private key to test deposit and withdrawal operations on the Aptos network.
+
 ## Quick Start
 
 ```rust
-use enhanced_ekiden_rust_sdk::{EkidenClient, EkidenConfig, Pagination};
+use ekiden_rust_sdk::{EkidenClient, EkidenConfig, Pagination};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -361,16 +380,6 @@ let config = EkidenConfig::production()?
     .with_retry_delay(Duration::from_millis(500))
     .with_logging(true);
 ```
-
-## Examples
-
-Check the `examples/` directory for complete working examples:
-
-- `basic_client.rs` - Basic API usage
-- `websocket_streams.rs` - WebSocket integration
-- `trading_bot.rs` - Simple trading bot
-- `market_maker.rs` - Market making example
-- `portfolio_monitor.rs` - Portfolio monitoring
 
 ## Testing
 

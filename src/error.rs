@@ -52,7 +52,6 @@ pub enum EkidenError {
     #[error("Rate limit exceeded")]
     RateLimit,
 
-    #[cfg(feature = "aptos")]
     #[error("Aptos error: {0}")]
     Aptos(String),
 }
